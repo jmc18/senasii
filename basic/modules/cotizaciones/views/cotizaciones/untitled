@@ -1,0 +1,88 @@
+
+
+
+CALCULADORA
+TAREA DE CSS
+TAQUIMECANOGRAFO
+	TOOLBAR
+PLANTEAMIENTO DEL PROYECTO (BD)
+
+*PRACTICA DE HILOS
+	SIMULADOR DE IMPRESION
+*PRACTICA DE SOCKETS
+*PRACTICAS DE ANDROID
+
+
+<?= 
+        $form->field($model, 'fecinilinea')->widget(DatePicker::classname(), 
+                [
+                    'options' => ['placeholder' => 'Introduce la fecha inicial en la cual se puede descargar el archivo'],
+                    'pluginOptions' => [
+                        'autoclose'=>true,
+                        'format' => 'yyyy-mm-dd',
+                    ]
+                ]);
+    ?>
+
+    <?= 
+        $form->field($model, 'fecfinlinea')->widget(DatePicker::classname(), 
+                [
+                    'options' => ['placeholder' => 'Introduce la fecha final en la cual se puede descargar el archivo'],
+                    'pluginOptions' => [
+                        'autoclose'=>true,
+                        'format' => 'yyyy-mm-dd',
+                    ]
+                ]);
+    ?>
+ 
+    <?=
+        \yiister\gentelella\widgets\Timeline::widget(
+        [
+            'items' => [
+                [
+                    'title' => 'Lineamientos del Ensayo',
+                    'byline' => '<span>En este sección podrás cargar el archivo en formato PDF con los lineamientos a seguir por el cliente para este ensayo</a>',
+                    'content' => 
+                            $form->field($model, 'image')->widget(FileInput::classname(), [
+                                    'options' => ['accept' => ['applicaction/pdf']],
+                                    'pluginOptions'=>[
+                                        /*'initialPreview'=>[
+                                            //Yii::getAlias('@app').'/assets/'.$model->hash_linea,
+                                            '/Users/office/Sites/sena_dev/basic/assets/7VC_-_RptQ0F4iGxS-fZLcFPXfaPfSYm.pdf',
+                                        ],*/
+                                        'initialPreviewAsData'=>true,
+                                        'allowedFileExtensions'=>['pdf'],
+                                        'showUpload' => false,
+                                    ]
+                            ]).GridView::widget([
+                                'dataProvider' => $dataProvider,
+                                'columns' => [
+                                    [
+                                        'header'=> 'Archivo',
+                                        'value' => 'file_linea'
+                                    ],
+                                    [
+                                        'class' => 'yii\grid\ActionColumn',
+                                        'header'=>'Lineamientos',
+                                        'template'=>'{ver}',
+                                        'buttons'=>[
+                                            'ver'=>function($url,$model)
+                                            {
+                                                if( !empty($model->file_linea) ){
+                                                    return Html::a('Ver Lineamiento',
+                                                        ['/ensayos/ensayos/verarchivo', 'file'=>$model->file_linea, 'hash'=>$model->hash_linea], 
+                                                        []
+                                                    );
+                                                }
+                                                else{
+                                                    return Html::bsLabel("No se ha registrado el lineamiento para este ensayo.", Html::TYPE_DANGER);
+                                                }
+                                            }
+                                        ],
+                                    ],
+                                ],
+                            ]),
+                ],
+            ]
+        ]);    
+    ?>
