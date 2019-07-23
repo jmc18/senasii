@@ -1,10 +1,9 @@
 <?php
 
-namespace app\modules\ensayos\models;
+namespace app\modules\catalogos\models\areas;
 
 use Yii;
 
-use app\modules\ensayos\models\UnidadesResultados;
 /**
  * This is the model class for table "detalle_formulario_seccion".
  *
@@ -27,6 +26,9 @@ use app\modules\ensayos\models\UnidadesResultados;
  */
 class DetalleFormularioSeccion extends \yii\db\ActiveRecord
 {
+    public $new_orden;
+    public $req_bol;
+    public $rec_bol_insert;
     /**
      * @inheritdoc
      */
@@ -42,13 +44,13 @@ class DetalleFormularioSeccion extends \yii\db\ActiveRecord
     {
         return [
             [['idseccion', 'id_campo', 'tipo_entrada', 'requerido', 'orden'], 'required'],
-            [['idseccion', 'id_campo', 'idunidad', 'orden', 'status'], 'integer'],
+            [['idseccion', 'id_campo', 'idunidad', 'orden', 'status', 'new_orden'], 'integer'],
             [['fecha_ingreso'], 'safe'],
-            [['formula', 'texto_etiquetas'], 'string', 'max' => 100],
+            [['formula', 'texto_etiquetas', 'rec_bol_insert', 'req_bol'], 'string', 'max' => 100],
             [['tipo_entrada'], 'string', 'max' => 30],
             [['requerido'], 'string', 'max' => 2],
             [['id_campo'], 'exist', 'skipOnError' => true, 'targetClass' => CamposFormulariosCalibracion::className(), 'targetAttribute' => ['id_campo' => 'id_campo']],
-            [['idunidad'], 'exist', 'skipOnError' => true, 'targetClass' => UnidadesResultados::className(), 'targetAttribute' => ['idunidad' => 'idunidad']],
+            [['idunidad'], 'exist', 'skipOnError' => true, 'targetClass' => UnidadesResultado::className(), 'targetAttribute' => ['idunidad' => 'idunidad']],
             [['idseccion'], 'exist', 'skipOnError' => true, 'targetClass' => SeccionesFormularioCalibracion::className(), 'targetAttribute' => ['idseccion' => 'idseccion']],
         ];
     }
@@ -85,7 +87,7 @@ class DetalleFormularioSeccion extends \yii\db\ActiveRecord
      */
     public function getIdunidad0()
     {
-        return $this->hasOne(UnidadesResultados::className(), ['idunidad' => 'idunidad']);
+        return $this->hasOne(UnidadesResultado::className(), ['idunidad' => 'idunidad']);
     }
 
     /**

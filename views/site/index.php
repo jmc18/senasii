@@ -400,7 +400,7 @@ $this->title = 'SENA :: Sistema Integral de Información';
                             ]
                         )
                         ?>
-                        <!--<= Html::a('Validar Completados', ['/ensayos/validaciones/completados'], ['class'=>'btn btn-primary btn-block']) ?>-->
+                        <?= Html::a('Validar Completados', ['/ensayos/validaciones/completados'], ['class'=>'btn btn-primary btn-block']) ?>
                     </div>
                 </div>
             </div>

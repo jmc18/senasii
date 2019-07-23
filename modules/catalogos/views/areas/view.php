@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Borrar', ['delete', 'id' => $model->idarea], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Estas seguro que quieres borrar esta Area?',
+                'confirm' => '¿Estas seguro que quieres borrar esta Area?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -28,8 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'idarea',
             'descarea',
+            'cantidad_serie_datos',
         ],
     ]) ?>
 

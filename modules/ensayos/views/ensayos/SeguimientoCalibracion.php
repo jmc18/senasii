@@ -71,7 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     echo \yiister\gentelella\widgets\Timeline::widget(
                                             [
                                                 'items' => [
-                                                    [
+                                                        [
                                                         'title' => 'Estatus 1: Orden de Compra / Cotización',
                                                         'byline' => '<span>Para continuar con el proceso de ensayo deberas subir la orden de compra o cotización, la cual será validada por SENA en breve</a>',
                                                         'content' => '<h4>LINEAMIENTOS DEL ENSAYO</h4>'
@@ -81,11 +81,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                                         GridView::widget([
                                                             'dataProvider' => $dataLinea,
                                                             'columns' => [
-                                                                [
+                                                                    [
                                                                     'header' => 'Archivo',
                                                                     'value' => 'file_linea'
                                                                 ],
-                                                                [
+                                                                    [
                                                                     'class' => 'yii\grid\ActionColumn',
                                                                     'header' => 'Acción',
                                                                     'template' => '{download}',
@@ -130,19 +130,19 @@ $this->params['breadcrumbs'][] = $this->title;
                                                         . GridView::widget([
                                                             'dataProvider' => $dataOdeC,
                                                             'columns' => [
-                                                                [
+                                                                    [
                                                                     'header' => 'Archivo',
                                                                     'value' => 'file'
                                                                 ],
-                                                                [
+                                                                    [
                                                                     'header' => 'Fecha Captura',
                                                                     'value' => 'fecha'
                                                                 ],
-                                                                [
+                                                                    [
                                                                     'header' => 'Fecha Validación',
                                                                     'value' => 'validado'
                                                                 ],
-                                                                [
+                                                                    [
                                                                     'class' => 'yii\grid\ActionColumn',
                                                                     'header' => 'Evidencia',
                                                                     'template' => '{ver}',
@@ -162,25 +162,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                     echo \yiister\gentelella\widgets\Timeline::widget(
                                             [
                                                 'items' => [
-                                                    [
+                                                        [
                                                         'title' => 'Estatus 1: Orden de Compra / Cotización',
                                                         'byline' => '<span>El archivo esta en proceso de validación y en breve deberá estaras recibiendo un correo con el resultado de dicha validación</a>',
                                                         'content' => GridView::widget([
                                                             'dataProvider' => $dataOdeC,
                                                             'columns' => [
-                                                                [
+                                                                    [
                                                                     'header' => 'Archivo',
                                                                     'value' => 'file'
                                                                 ],
-                                                                [
+                                                                    [
                                                                     'header' => 'Fecha Captura',
                                                                     'value' => 'fecha'
                                                                 ],
-                                                                [
+                                                                    [
                                                                     'header' => 'Fecha Validación',
                                                                     'value' => 'validado'
                                                                 ],
-                                                                [
+                                                                    [
                                                                     'class' => 'yii\grid\ActionColumn',
                                                                     'header' => 'Evidencia',
                                                                     'template' => '{ver}',
@@ -208,25 +208,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                         echo \yiister\gentelella\widgets\Timeline::widget(
                                                 [
                                                     'items' => [
-                                                        [
+                                                            [
                                                             'title' => 'Estatus 1: Orden de Compra / Cotización',
                                                             'byline' => '<span>La orden de compra fue verificada y aceptada</a>',
                                                             'content' => GridView::widget([
                                                                 'dataProvider' => $dataOdeC,
                                                                 'columns' => [
-                                                                    [
+                                                                        [
                                                                         'header' => 'Archivo',
                                                                         'value' => 'file'
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'header' => 'Fecha Captura',
                                                                         'value' => 'fecha'
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'header' => 'Fecha Validación',
                                                                         'value' => 'validado'
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'class' => 'yii\grid\ActionColumn',
                                                                         'header' => 'Evidencia',
                                                                         'template' => '{ver}',
@@ -240,7 +240,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                 ],
                                                             ]),
                                                         ],
-                                                        [
+                                                            [
                                                             'title' => 'Estatus 2: Subir Comprobante de Pago',
                                                             'byline' => '<span>Envia tu comprobante de pago para que puedas seguir con el siguiente paso, una vez validado dicho pago (Este proceso puede tardar un tiempo considerado).</a>',
                                                             'content' => $form->field($model_evidencia, 'image')->widget(FileInput::classname(), [
@@ -258,19 +258,19 @@ $this->params['breadcrumbs'][] = $this->title;
                                                             . GridView::widget([
                                                                 'dataProvider' => $dataPago,
                                                                 'columns' => [
-                                                                    [
+                                                                        [
                                                                         'header' => 'Archivo',
                                                                         'value' => 'file'
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'header' => 'Fecha Captura',
                                                                         'value' => 'fecha'
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'header' => 'Fecha Validación',
                                                                         'value' => 'validado'
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'class' => 'yii\grid\ActionColumn',
                                                                         'header' => 'Evidencia',
                                                                         'template' => '{ver}',
@@ -290,25 +290,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                         echo \yiister\gentelella\widgets\Timeline::widget(
                                                 [
                                                     'items' => [
-                                                        [
+                                                            [
                                                             'title' => 'Estatus 1: Orden de Compra / Cotización',
                                                             'byline' => '<span>La orden de compra fue verificada y aceptada</a>',
                                                             'content' => GridView::widget([
                                                                 'dataProvider' => $dataOdeC,
                                                                 'columns' => [
-                                                                    [
+                                                                        [
                                                                         'header' => 'Archivo',
                                                                         'value' => 'file'
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'header' => 'Fecha Captura',
                                                                         'value' => 'fecha'
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'header' => 'Fecha Validación',
                                                                         'value' => 'validado'
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'class' => 'yii\grid\ActionColumn',
                                                                         'header' => 'Evidencia',
                                                                         'template' => '{ver}',
@@ -322,25 +322,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                 ],
                                                             ]),
                                                         ],
-                                                        [
+                                                            [
                                                             'title' => 'Estatus 2: Subir Comprobante de Pago',
                                                             'byline' => '<span>El archivo esta en proceso de validación y en breve deberá estar recibiendo un correo con el resultado de dicha validación</a>',
                                                             'content' => GridView::widget([
                                                                 'dataProvider' => $dataPago,
                                                                 'columns' => [
-                                                                    [
+                                                                        [
                                                                         'header' => 'Archivo',
                                                                         'value' => 'file'
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'header' => 'Fecha Captura',
                                                                         'value' => 'fecha'
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'header' => 'Fecha Validación',
                                                                         'value' => 'validado'
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'class' => 'yii\grid\ActionColumn',
                                                                         'header' => 'Evidencia',
                                                                         'template' => '{ver}',
@@ -370,25 +370,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                             echo \yiister\gentelella\widgets\Timeline::widget(
                                                     [
                                                         'items' => [
-                                                            [
+                                                                [
                                                                 'title' => 'Estatus 1: Orden de Compra / Cotización',
                                                                 'byline' => '<span>La orden de compra fue verificada y aceptada</a>',
                                                                 'content' => GridView::widget([
                                                                     'dataProvider' => $dataOdeC,
                                                                     'columns' => [
-                                                                        [
+                                                                            [
                                                                             'header' => 'Archivo',
                                                                             'value' => 'file'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'header' => 'Fecha Captura',
                                                                             'value' => 'fecha'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'header' => 'Fecha Validación',
                                                                             'value' => 'validado'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'class' => 'yii\grid\ActionColumn',
                                                                             'header' => 'Evidencia',
                                                                             'template' => '{ver}',
@@ -402,26 +402,26 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                     ],
                                                                 ]),
                                                             ],
-                                                            [
+                                                                [
                                                                 'title' => 'Estatus 2: Comprobante de Pago',
                                                                 'byline' => '<span>El comprobante de pago fue verificado y aceptado</a>',
                                                                 'content' => $credito .
                                                                 GridView::widget([
                                                                     'dataProvider' => $dataPago,
                                                                     'columns' => [
-                                                                        [
+                                                                            [
                                                                             'header' => 'Archivo',
                                                                             'value' => 'file'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'header' => 'Fecha Captura',
                                                                             'value' => 'fecha'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'header' => 'Fecha Validación',
                                                                             'value' => 'validado'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'class' => 'yii\grid\ActionColumn',
                                                                             'header' => 'Evidencia',
                                                                             'template' => '{ver}',
@@ -435,7 +435,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                     ],
                                                                 ]),
                                                             ],
-                                                            [
+                                                                [
                                                                 'title' => 'Estatus 3: Descargar Protocolos / Subir Carta de Aceptación',
                                                                 'byline' => '<span>En este paso deberas descargar los protocolos a seguir para realizar el ensayo y subir el formato de aceptación de dichos protocolos</a>',
                                                                 'content' => '<h4>DESCARGAS</h4>'
@@ -456,19 +456,19 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                 . GridView::widget([
                                                                     'dataProvider' => $dataAceptacion,
                                                                     'columns' => [
-                                                                        [
+                                                                            [
                                                                             'header' => 'Archivo',
                                                                             'value' => 'file'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'header' => 'Fecha Captura',
                                                                             'value' => 'fecha'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'header' => 'Fecha Validación',
                                                                             'value' => 'validado'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'class' => 'yii\grid\ActionColumn',
                                                                             'header' => 'Evidencia',
                                                                             'template' => '{ver}',
@@ -489,25 +489,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                             echo \yiister\gentelella\widgets\Timeline::widget(
                                                     [
                                                         'items' => [
-                                                            [
+                                                                [
                                                                 'title' => 'Estatus 1: Orden de Compra / Cotización',
                                                                 'byline' => '<span>La orden de compra fue verificada y aceptada</a>',
                                                                 'content' => GridView::widget([
                                                                     'dataProvider' => $dataOdeC,
                                                                     'columns' => [
-                                                                        [
+                                                                            [
                                                                             'header' => 'Archivo',
                                                                             'value' => 'file'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'header' => 'Fecha Captura',
                                                                             'value' => 'fecha'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'header' => 'Fecha Validación',
                                                                             'value' => 'validado'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'class' => 'yii\grid\ActionColumn',
                                                                             'header' => 'Evidencia',
                                                                             'template' => '{ver}',
@@ -521,25 +521,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                     ],
                                                                 ]),
                                                             ],
-                                                            [
+                                                                [
                                                                 'title' => 'Estatus 2: Comprobante de Pago',
                                                                 'byline' => '<span>El comprobante de pago fue verificada y aceptada</a>',
                                                                 'content' => GridView::widget([
                                                                     'dataProvider' => $dataPago,
                                                                     'columns' => [
-                                                                        [
+                                                                            [
                                                                             'header' => 'Archivo',
                                                                             'value' => 'file'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'header' => 'Fecha Captura',
                                                                             'value' => 'fecha'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'header' => 'Fecha Validación',
                                                                             'value' => 'validado'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'class' => 'yii\grid\ActionColumn',
                                                                             'header' => 'Evidencia',
                                                                             'template' => '{ver}',
@@ -553,25 +553,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                     ],
                                                                 ]),
                                                             ],
-                                                            [
+                                                                [
                                                                 'title' => 'Estatus 3: Descargar Protocolos / Subir Carta de Aceptación',
                                                                 'byline' => '<span>El archivo esta en proceso de validación y en breve deberá estar recibiendo un correo con el resultado de dicha validación</a>',
                                                                 'content' => GridView::widget([
                                                                     'dataProvider' => $dataAceptacion,
                                                                     'columns' => [
-                                                                        [
+                                                                            [
                                                                             'header' => 'Archivo',
                                                                             'value' => 'file'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'header' => 'Fecha Captura',
                                                                             'value' => 'fecha'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'header' => 'Fecha Validación',
                                                                             'value' => 'validado'
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'class' => 'yii\grid\ActionColumn',
                                                                             'header' => 'Evidencia',
                                                                             'template' => '{ver}',
@@ -600,25 +600,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 echo \yiister\gentelella\widgets\Timeline::widget(
                                                         [
                                                             'items' => [
-                                                                [
+                                                                    [
                                                                     'title' => 'Estatus 1: Orden de Compra / Cotización',
                                                                     'byline' => '<span>La orden de compra fue verificada y aceptada</a>',
                                                                     'content' => GridView::widget([
                                                                         'dataProvider' => $dataOdeC,
                                                                         'columns' => [
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Archivo',
                                                                                 'value' => 'file'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Fecha Captura',
                                                                                 'value' => 'fecha'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Fecha Validación',
                                                                                 'value' => 'validado'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'class' => 'yii\grid\ActionColumn',
                                                                                 'header' => 'Evidencia',
                                                                                 'template' => '{ver}',
@@ -632,25 +632,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                         ],
                                                                     ]),
                                                                 ],
-                                                                [
+                                                                    [
                                                                     'title' => 'Estatus 2: Comprobante de Pago',
                                                                     'byline' => '<span>El comprobante de pago fue verificada y aceptada</a>',
                                                                     'content' => GridView::widget([
                                                                         'dataProvider' => $dataPago,
                                                                         'columns' => [
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Archivo',
                                                                                 'value' => 'file'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Fecha Captura',
                                                                                 'value' => 'fecha'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Fecha Validación',
                                                                                 'value' => 'validado'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'class' => 'yii\grid\ActionColumn',
                                                                                 'header' => 'Evidencia',
                                                                                 'template' => '{ver}',
@@ -664,25 +664,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                         ],
                                                                     ]),
                                                                 ],
-                                                                [
+                                                                    [
                                                                     'title' => 'Estatus 3: Carta de Aceptación de Lineamientos',
                                                                     'byline' => '<span>La carta de aceptación fue verificada y aceptada</a>',
                                                                     'content' => GridView::widget([
                                                                         'dataProvider' => $dataAceptacion,
                                                                         'columns' => [
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Archivo',
                                                                                 'value' => 'file'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Fecha Captura',
                                                                                 'value' => 'fecha'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Fecha Validación',
                                                                                 'value' => 'validado'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'class' => 'yii\grid\ActionColumn',
                                                                                 'header' => 'Evidencia',
                                                                                 'template' => '{ver}',
@@ -696,12 +696,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                         ],
                                                                     ]),
                                                                 ],
-                                                                [
+                                                                    [
                                                                     'title' => 'Estatus 4: Codigo de Identificación del Ensayo',
                                                                     'byline' => '<span>El siguiente código te permitirá identificar tu ensayo durante el proceso </a>',
                                                                     'content' => '<h3>CÓDIGO: ' . $model->codigo . '</h3>',
                                                                 ],
-                                                                [
+                                                                    [
                                                                     'title' => 'Estatus 5: Evidencia de Recepción del Elemento de Ensayo',
                                                                     'byline' => '<span>En este paso deberás subir la evidencia de la recepción del elemento de ensayo</a>',
                                                                     'content' => $form->field($model_evidencia, 'image')->widget(FileInput::classname(), [
@@ -719,19 +719,19 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                     . GridView::widget([
                                                                         'dataProvider' => $dataRecepcion,
                                                                         'columns' => [
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Archivo',
                                                                                 'value' => 'file'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Fecha Captura',
                                                                                 'value' => 'fecha'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Fecha Validación',
                                                                                 'value' => 'validado'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'class' => 'yii\grid\ActionColumn',
                                                                                 'header' => 'Evidencia',
                                                                                 'template' => '{ver}',
@@ -752,25 +752,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 echo \yiister\gentelella\widgets\Timeline::widget(
                                                         [
                                                             'items' => [
-                                                                [
+                                                                    [
                                                                     'title' => 'Estatus 1: Orden de Compra / Cotización',
                                                                     'byline' => '<span>La orden de compra fue verificada y aceptada</a>',
                                                                     'content' => GridView::widget([
                                                                         'dataProvider' => $dataOdeC,
                                                                         'columns' => [
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Archivo',
                                                                                 'value' => 'file'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Fecha Captura',
                                                                                 'value' => 'fecha'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Fecha Validación',
                                                                                 'value' => 'validado'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'class' => 'yii\grid\ActionColumn',
                                                                                 'header' => 'Evidencia',
                                                                                 'template' => '{ver}',
@@ -784,25 +784,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                         ],
                                                                     ]),
                                                                 ],
-                                                                [
+                                                                    [
                                                                     'title' => 'Estatus 2: Comprobante de Pago',
                                                                     'byline' => '<span>El comprobante de pago fue verificada y aceptada</a>',
                                                                     'content' => GridView::widget([
                                                                         'dataProvider' => $dataPago,
                                                                         'columns' => [
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Archivo',
                                                                                 'value' => 'file'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Fecha Captura',
                                                                                 'value' => 'fecha'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Fecha Validación',
                                                                                 'value' => 'validado'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'class' => 'yii\grid\ActionColumn',
                                                                                 'header' => 'Evidencia',
                                                                                 'template' => '{ver}',
@@ -816,25 +816,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                         ],
                                                                     ]),
                                                                 ],
-                                                                [
+                                                                    [
                                                                     'title' => 'Estatus 3: Carta de Aceptación de Lineamientos',
                                                                     'byline' => '<span>La carta de aceptación fue verificada y aceptada</a>',
                                                                     'content' => GridView::widget([
                                                                         'dataProvider' => $dataAceptacion,
                                                                         'columns' => [
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Archivo',
                                                                                 'value' => 'file'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Fecha Captura',
                                                                                 'value' => 'fecha'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Fecha Validación',
                                                                                 'value' => 'validado'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'class' => 'yii\grid\ActionColumn',
                                                                                 'header' => 'Evidencia',
                                                                                 'template' => '{ver}',
@@ -848,30 +848,30 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                         ],
                                                                     ]),
                                                                 ],
-                                                                [
+                                                                    [
                                                                     'title' => 'Estatus 4: Codigo de Identificación del Ensayo',
                                                                     'byline' => '<span>El siguiente código te permitirá identificar tu ensayo durante el proceso </a>',
                                                                     'content' => '<h3>CÓDIGO: ' . $model->codigo . '</h3>',
                                                                 ],
-                                                                [
+                                                                    [
                                                                     'title' => 'Estatus 5: Evidencia de Recepción del Elemento de Ensayo',
                                                                     'byline' => '<span>El archivo esta en proceso de validación y en breve deberá estar recibiendo un correo con el resultado de dicha validación</a>',
                                                                     'content' => GridView::widget([
                                                                         'dataProvider' => $dataRecepcion,
                                                                         'columns' => [
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Archivo',
                                                                                 'value' => 'file'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Fecha Captura',
                                                                                 'value' => 'fecha'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'header' => 'Fecha Validación',
                                                                                 'value' => 'validado'
                                                                             ],
-                                                                            [
+                                                                                [
                                                                                 'class' => 'yii\grid\ActionColumn',
                                                                                 'header' => 'Evidencia',
                                                                                 'template' => '{ver}',
@@ -900,25 +900,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                     echo \yiister\gentelella\widgets\Timeline::widget(
                                                             [
                                                                 'items' => [
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 1: Orden de Compra / Cotización',
                                                                         'byline' => '<span>La orden de compra fue verificada y aceptada</a>',
                                                                         'content' => GridView::widget([
                                                                             'dataProvider' => $dataOdeC,
                                                                             'columns' => [
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Archivo',
                                                                                     'value' => 'file'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Captura',
                                                                                     'value' => 'fecha'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Validación',
                                                                                     'value' => 'validado'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'class' => 'yii\grid\ActionColumn',
                                                                                     'header' => 'Evidencia',
                                                                                     'template' => '{ver}',
@@ -932,25 +932,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                             ],
                                                                         ]),
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 2: Comprobante de Pago',
                                                                         'byline' => '<span>El comprobante de pago fue verificada y aceptada</a>',
                                                                         'content' => GridView::widget([
                                                                             'dataProvider' => $dataPago,
                                                                             'columns' => [
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Archivo',
                                                                                     'value' => 'file'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Captura',
                                                                                     'value' => 'fecha'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Validación',
                                                                                     'value' => 'validado'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'class' => 'yii\grid\ActionColumn',
                                                                                     'header' => 'Evidencia',
                                                                                     'template' => '{ver}',
@@ -964,25 +964,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                             ],
                                                                         ]),
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 3: Carta de Aceptación de Lineamientos',
                                                                         'byline' => '<span>La carta de aceptación fue verificada y aceptada</a>',
                                                                         'content' => GridView::widget([
                                                                             'dataProvider' => $dataAceptacion,
                                                                             'columns' => [
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Archivo',
                                                                                     'value' => 'file'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Captura',
                                                                                     'value' => 'fecha'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Validación',
                                                                                     'value' => 'validado'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'class' => 'yii\grid\ActionColumn',
                                                                                     'header' => 'Evidencia',
                                                                                     'template' => '{ver}',
@@ -996,30 +996,30 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                             ],
                                                                         ]),
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 4: Codigo de Identificación del Ensayo',
                                                                         'byline' => '<span>El siguiente código te permitirá identificar tu ensayo durante el proceso </a>',
                                                                         'content' => '<h3>CÓDIGO: ' . $model->codigo . '</h3>',
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 5: Evidencias de Recepción de Elemento de Ensayo',
                                                                         'byline' => '<span>La carta de aceptación fue verificada y aceptada</a>',
                                                                         'content' => GridView::widget([
                                                                             'dataProvider' => $dataRecepcion,
                                                                             'columns' => [
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Archivo',
                                                                                     'value' => 'file'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Captura',
                                                                                     'value' => 'fecha'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Validación',
                                                                                     'value' => 'validado'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'class' => 'yii\grid\ActionColumn',
                                                                                     'header' => 'Evidencia',
                                                                                     'template' => '{ver}',
@@ -1033,7 +1033,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                             ],
                                                                         ]),
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 6: Evidencia de Entrega del Elemento de Ensayo',
                                                                         'byline' => '<span>En este paso deberás subir la evidencia de la entrega del elemento de ensayo</a>',
                                                                         'content' => $form->field($model_evidencia, 'image')->widget(FileInput::classname(), [
@@ -1051,19 +1051,19 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                         . GridView::widget([
                                                                             'dataProvider' => $dataEntrega,
                                                                             'columns' => [
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Archivo',
                                                                                     'value' => 'file'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Captura',
                                                                                     'value' => 'fecha'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Validación',
                                                                                     'value' => 'validado'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'class' => 'yii\grid\ActionColumn',
                                                                                     'header' => 'Evidencia',
                                                                                     'template' => '{ver}',
@@ -1084,25 +1084,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                     echo \yiister\gentelella\widgets\Timeline::widget(
                                                             [
                                                                 'items' => [
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 1: Orden de Compra / Cotización',
                                                                         'byline' => '<span>La orden de compra fue verificada y aceptada</a>',
                                                                         'content' => GridView::widget([
                                                                             'dataProvider' => $dataOdeC,
                                                                             'columns' => [
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Archivo',
                                                                                     'value' => 'file'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Captura',
                                                                                     'value' => 'fecha'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Validación',
                                                                                     'value' => 'validado'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'class' => 'yii\grid\ActionColumn',
                                                                                     'header' => 'Evidencia',
                                                                                     'template' => '{ver}',
@@ -1116,25 +1116,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                             ],
                                                                         ]),
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 2: Comprobante de Pago',
                                                                         'byline' => '<span>El comprobante de pago fue verificada y aceptada</a>',
                                                                         'content' => GridView::widget([
                                                                             'dataProvider' => $dataPago,
                                                                             'columns' => [
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Archivo',
                                                                                     'value' => 'file'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Captura',
                                                                                     'value' => 'fecha'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Validación',
                                                                                     'value' => 'validado'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'class' => 'yii\grid\ActionColumn',
                                                                                     'header' => 'Evidencia',
                                                                                     'template' => '{ver}',
@@ -1148,25 +1148,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                             ],
                                                                         ]),
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 3: Carta de Aceptación de Lineamientos',
                                                                         'byline' => '<span>La carta de aceptación fue verificada y aceptada</a>',
                                                                         'content' => GridView::widget([
                                                                             'dataProvider' => $dataAceptacion,
                                                                             'columns' => [
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Archivo',
                                                                                     'value' => 'file'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Captura',
                                                                                     'value' => 'fecha'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Validación',
                                                                                     'value' => 'validado'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'class' => 'yii\grid\ActionColumn',
                                                                                     'header' => 'Evidencia',
                                                                                     'template' => '{ver}',
@@ -1180,30 +1180,30 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                             ],
                                                                         ]),
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 4: Codigo de Identificación del Ensayo',
                                                                         'byline' => '<span>El siguiente código te permitirá identificar tu ensayo durante el proceso </a>',
                                                                         'content' => '<h3>CÓDIGO: ' . $model->codigo . '</h3>',
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 5: Evidencias de Recepción de Elemento de Ensayo',
                                                                         'byline' => '<span>La evidencia de recepción del elemento de ensayo fue verificada y aceptada</a>',
                                                                         'content' => GridView::widget([
                                                                             'dataProvider' => $dataRecepcion,
                                                                             'columns' => [
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Archivo',
                                                                                     'value' => 'file'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Captura',
                                                                                     'value' => 'fecha'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Validación',
                                                                                     'value' => 'validado'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'class' => 'yii\grid\ActionColumn',
                                                                                     'header' => 'Evidencia',
                                                                                     'template' => '{ver}',
@@ -1217,25 +1217,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                             ],
                                                                         ]),
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 6: Evidencia de Entrega del Elemento de Ensayo',
                                                                         'byline' => '<span>El archivo esta en proceso de validación y en breve deberá estar recibiendo un correo con el resultado de dicha validación</a>',
                                                                         'content' => GridView::widget([
                                                                             'dataProvider' => $dataEntrega,
                                                                             'columns' => [
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Archivo',
                                                                                     'value' => 'file'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Captura',
                                                                                     'value' => 'fecha'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Validación',
                                                                                     'value' => 'validado'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'class' => 'yii\grid\ActionColumn',
                                                                                     'header' => 'Evidencia',
                                                                                     'template' => '{ver}',
@@ -1254,38 +1254,38 @@ $this->params['breadcrumbs'][] = $this->title;
                                                     );
                                                 }
                                             } else {
-                                                
+
                                                 if ($model->termina_resultados == null) {
-                                                
+
                                                     $form = ActiveForm::begin([
                                                                 'action' => ['ensayos/subirevidencia', 'idetapa' => 7],
                                                                 'options' => ['enctype' => 'multipart/form-data']
                                                     ]);
-                                                    
+
                                                     if ($model->valida_resultados == null) {
 
                                                         echo \yiister\gentelella\widgets\Timeline::widget(
                                                                 [
                                                                     'items' => [
-                                                                        [
+                                                                            [
                                                                             'title' => 'Estatus 1: Orden de Compra / Cotización',
                                                                             'byline' => '<span>La orden de compra fue verificada y aceptada</a>',
                                                                             'content' => GridView::widget([
                                                                                 'dataProvider' => $dataOdeC,
                                                                                 'columns' => [
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Archivo',
                                                                                         'value' => 'file'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Captura',
                                                                                         'value' => 'fecha'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Validación',
                                                                                         'value' => 'validado'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'class' => 'yii\grid\ActionColumn',
                                                                                         'header' => 'Evidencia',
                                                                                         'template' => '{ver}',
@@ -1299,25 +1299,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                                 ],
                                                                             ]),
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'title' => 'Estatus 2: Comprobante de Pago',
                                                                             'byline' => '<span>El comprobante de pago fue verificada y aceptada</a>',
                                                                             'content' => GridView::widget([
                                                                                 'dataProvider' => $dataPago,
                                                                                 'columns' => [
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Archivo',
                                                                                         'value' => 'file'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Captura',
                                                                                         'value' => 'fecha'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Validación',
                                                                                         'value' => 'validado'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'class' => 'yii\grid\ActionColumn',
                                                                                         'header' => 'Evidencia',
                                                                                         'template' => '{ver}',
@@ -1331,25 +1331,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                                 ],
                                                                             ]),
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'title' => 'Estatus 3: Carta de Aceptación de Lineamientos',
                                                                             'byline' => '<span>La carta de aceptación fue verificada y aceptada</a>',
                                                                             'content' => GridView::widget([
                                                                                 'dataProvider' => $dataAceptacion,
                                                                                 'columns' => [
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Archivo',
                                                                                         'value' => 'file'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Captura',
                                                                                         'value' => 'fecha'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Validación',
                                                                                         'value' => 'validado'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'class' => 'yii\grid\ActionColumn',
                                                                                         'header' => 'Evidencia',
                                                                                         'template' => '{ver}',
@@ -1363,30 +1363,30 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                                 ],
                                                                             ]),
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'title' => 'Estatus 4: Codigo de Identificación del Ensayo',
                                                                             'byline' => '<span>El siguiente código te permitirá identificar tu ensayo durante el proceso </a>',
                                                                             'content' => '<h3>CÓDIGO: ' . $model->codigo . '</h3>',
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'title' => 'Estatus 5: Evidencias de Recepción de Elemento de Ensayo',
                                                                             'byline' => '<span>La evidencia de recepción del elemento de ensayo fue verificada y aceptada</a>',
                                                                             'content' => GridView::widget([
                                                                                 'dataProvider' => $dataRecepcion,
                                                                                 'columns' => [
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Archivo',
                                                                                         'value' => 'file'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Captura',
                                                                                         'value' => 'fecha'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Validación',
                                                                                         'value' => 'validado'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'class' => 'yii\grid\ActionColumn',
                                                                                         'header' => 'Evidencia',
                                                                                         'template' => '{ver}',
@@ -1400,25 +1400,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                                 ],
                                                                             ]),
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'title' => 'Estatus 6: Evidencia de Entrega del Elemento de Ensayo',
                                                                             'byline' => '<span>El archivo esta en proceso de validación y en breve deberá estar recibiendo un correo con el resultado de dicha validación</a>',
                                                                             'content' => GridView::widget([
                                                                                 'dataProvider' => $dataEntrega,
                                                                                 'columns' => [
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Archivo',
                                                                                         'value' => 'file'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Captura',
                                                                                         'value' => 'fecha'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Validación',
                                                                                         'value' => 'validado'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'class' => 'yii\grid\ActionColumn',
                                                                                         'header' => 'Evidencia',
                                                                                         'template' => '{ver}',
@@ -1432,55 +1432,21 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                                 ],
                                                                             ]),
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'title' => 'Estatus 7: Captura de Resultados del Ensayo',
-                                                                            'byline' => '<span>Para finalizar el proceso del ensayo, deberás registrar los resultados del mismo</a>',
+                                                                            'byline' => '<span>Para finalizar el proceso del ensayo, deberás registrar los resultados del mismo, <b>la cantidad de serie de datos será de' . $cant_serie_datos . '</b></a>',
                                                                             'content' =>
-                                                                            Html::button('Agregar Sub Muestra', ['value' => Url::to('index.php?r=ensayos/ensayos/capturarsubmuestras'), 'class' => 'btn btn-primary', 'id' => 'botonModalResultados'])
-                                                                            . GridView::widget([
-                                                                                'dataProvider' => $dataResultados,
-                                                                                'columns' => [
-                                                                                    [
-                                                                                        'header' => 'Sub Muestra',
-                                                                                        'value' => 'no_submuestra'
-                                                                                    ],
-                                                                                    [
-                                                                                        'header' => 'Resultado',
-                                                                                        'value' => 'resultado'
-                                                                                    ],
-                                                                                    [
-                                                                                        'header' => 'Unidad',
-                                                                                        'value' => 'idunidad0.nombre'
-                                                                                    ],
-                                                                                    [
-                                                                                        'header' => 'Fecha de Captura',
-                                                                                        'value' => 'fecha_captura'
-                                                                                    ],
-                                                                                    [
-                                                                                        'header' => 'Fecha de Validación',
-                                                                                        'value' => 'fecha_validacion'
-                                                                                    ],
-                                                                                    [
-                                                                                        'class' => 'yii\grid\ActionColumn',
-                                                                                        'header' => 'Editar Sub Muestra',
-                                                                                        'template' => '{editar}',
-                                                                                        'buttons' => [
-                                                                                            'editar' => function($url, $model, $dataResultados) {
-                                                                                                return Html::button('Editar Sub Muestra', ['value' => Url::to(['actualizarsubmuestra', 'idarea' => $model->idarea, 'idref' => $model->idreferencia, 'idcot' => $model->idcot, 'no_submuestra' => $dataResultados['no_submuestra']]), 'class' => 'btn btn-primary btn-xs btnModificarSub'], []
-                                                                                                );
-                                                                                            }
-                                                                                        ],
-                                                                                    ],
-                                                                                ],
-                                                                            ]) . $form->field($model_evidencia, 'excel')->widget(FileInput::classname(), [
+                                                                            $resultados_html
+                                                                            . $form->field($model_evidencia, 'excel')->widget(FileInput::classname(), [
                                                                                 'options' => ['accept' => ['application/vnd.ms-excel']],
-                                                                                'pluginOptions' => ['allowedFileExtensions' => ['xlsx', 'xls'], 'showUpload' => false,],
+                                                                                'pluginOptions' => ['allowedFileExtensions' => ['xlsx', 'xls'], 'showUpload' => true],
                                                                             ])->label("Documento de Evidencia")
                                                                             . Html::submitButton('Subir Evidencia Entrega', ['class' => $cantSubMuestra < 5 ? 'btn btn-success hidden' : 'btn btn-success'])
-                                                                            . Html::a('Terminar Captura de Evidencia', ['ensayos/terminaresultados',
+                                                                            . Html::a('Terminar Captura de Evidencia', ['ensayos/terminarentregaresultadoscalibracion',
                                                                                 'idarea' => $model->idarea,
                                                                                 'idref' => $model->idreferencia,
-                                                                                'idcot' => $model->idcot], ['class' => 'btn btn-primary',
+                                                                                'idcot' => $model->idcot,
+                                                                                'idetapa' => 7], ['class' => $cantSubMuestra < $cant_serie_datos ? 'btn btn-primary hidden' : 'btn btn-danger',
                                                                                 'data' => [
                                                                                     'confirm' => "¿Deseas terminar la captura de evidencias y resultados en esta etapa?",
                                                                                 ],
@@ -1488,15 +1454,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                             . GridView::widget([
                                                                                 'dataProvider' => $filesResultado,
                                                                                 'columns' => [
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Archivo',
                                                                                         'value' => 'file'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Captura',
                                                                                         'value' => 'fecha'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'class' => 'yii\grid\ActionColumn',
                                                                                         'header' => 'Evidencia',
                                                                                         'template' => '{ver}',
@@ -1508,7 +1474,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                                         ],
                                                                                     ],
                                                                                 ],
-                                                                            ]),
+                                                                            ])
                                                                         ],
                                                                     ]
                                                                 ]
@@ -1517,25 +1483,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                         echo \yiister\gentelella\widgets\Timeline::widget(
                                                                 [
                                                                     'items' => [
-                                                                        [
+                                                                            [
                                                                             'title' => 'Estatus 1: Orden de Compra / Cotización',
                                                                             'byline' => '<span>La orden de compra fue verificada y aceptada</a>',
                                                                             'content' => GridView::widget([
                                                                                 'dataProvider' => $dataOdeC,
                                                                                 'columns' => [
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Archivo',
                                                                                         'value' => 'file'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Captura',
                                                                                         'value' => 'fecha'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Validación',
                                                                                         'value' => 'validado'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'class' => 'yii\grid\ActionColumn',
                                                                                         'header' => 'Evidencia',
                                                                                         'template' => '{ver}',
@@ -1549,25 +1515,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                                 ],
                                                                             ]),
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'title' => 'Estatus 2: Comprobante de Pago',
                                                                             'byline' => '<span>El comprobante de pago fue verificada y aceptada</a>',
                                                                             'content' => GridView::widget([
                                                                                 'dataProvider' => $dataPago,
                                                                                 'columns' => [
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Archivo',
                                                                                         'value' => 'file'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Captura',
                                                                                         'value' => 'fecha'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Validación',
                                                                                         'value' => 'validado'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'class' => 'yii\grid\ActionColumn',
                                                                                         'header' => 'Evidencia',
                                                                                         'template' => '{ver}',
@@ -1581,25 +1547,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                                 ],
                                                                             ]),
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'title' => 'Estatus 3: Carta de Aceptación de Lineamientos',
                                                                             'byline' => '<span>La carta de aceptación fue verificada y aceptada</a>',
                                                                             'content' => GridView::widget([
                                                                                 'dataProvider' => $dataAceptacion,
                                                                                 'columns' => [
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Archivo',
                                                                                         'value' => 'file'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Captura',
                                                                                         'value' => 'fecha'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Validación',
                                                                                         'value' => 'validado'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'class' => 'yii\grid\ActionColumn',
                                                                                         'header' => 'Evidencia',
                                                                                         'template' => '{ver}',
@@ -1613,30 +1579,30 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                                 ],
                                                                             ]),
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'title' => 'Estatus 4: Codigo de Identificación del Ensayo',
                                                                             'byline' => '<span>El siguiente código te permitirá identificar tu ensayo durante el proceso </a>',
                                                                             'content' => '<h3>CÓDIGO: ' . $model->codigo . '</h3>',
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'title' => 'Estatus 5: Evidencias de Recepción de Elemento de Ensayo',
                                                                             'byline' => '<span>La evidencia de recepción del elemento de ensayo fue verificada y aceptada</a>',
                                                                             'content' => GridView::widget([
                                                                                 'dataProvider' => $dataRecepcion,
                                                                                 'columns' => [
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Archivo',
                                                                                         'value' => 'file'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Captura',
                                                                                         'value' => 'fecha'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Validación',
                                                                                         'value' => 'validado'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'class' => 'yii\grid\ActionColumn',
                                                                                         'header' => 'Evidencia',
                                                                                         'template' => '{ver}',
@@ -1650,25 +1616,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                                 ],
                                                                             ]),
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'title' => 'Estatus 6: Evidencia de Entrega del Elemento de Ensayo',
                                                                             'byline' => '<span>El archivo esta en proceso de validación y en breve deberá estar recibiendo un correo con el resultado de dicha validación</a>',
                                                                             'content' => GridView::widget([
                                                                                 'dataProvider' => $dataEntrega,
                                                                                 'columns' => [
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Archivo',
                                                                                         'value' => 'file'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Captura',
                                                                                         'value' => 'fecha'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Validación',
                                                                                         'value' => 'validado'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'class' => 'yii\grid\ActionColumn',
                                                                                         'header' => 'Evidencia',
                                                                                         'template' => '{ver}',
@@ -1682,47 +1648,23 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                                 ],
                                                                             ]),
                                                                         ],
-                                                                        [
+                                                                            [
                                                                             'title' => 'Estatus 7: Captura de Resultados del Ensayo',
                                                                             'byline' => '<span>Los resultados fueron ingresados y en breve serán validados.</a>',
                                                                             'content' =>
-                                                                            GridView::widget([
-                                                                                'dataProvider' => $dataResultados,
-                                                                                'columns' => [
-                                                                                    [
-                                                                                        'header' => 'Sub Muestra',
-                                                                                        'value' => 'no_submuestra'
-                                                                                    ],
-                                                                                    [
-                                                                                        'header' => 'Resultado',
-                                                                                        'value' => 'resultado'
-                                                                                    ],
-                                                                                    [
-                                                                                        'header' => 'Unidad',
-                                                                                        'value' => 'idunidad0.nombre'
-                                                                                    ],
-                                                                                    [
-                                                                                        'header' => 'Fecha de Captura',
-                                                                                        'value' => 'fecha_captura'
-                                                                                    ],
-                                                                                    [
-                                                                                        'header' => 'Fecha de Validación',
-                                                                                        'value' => 'fecha_validacion'
-                                                                                    ],
-                                                                                ],
-                                                                            ])
+                                                                            $resultados_html
                                                                             . GridView::widget([
                                                                                 'dataProvider' => $filesResultado,
                                                                                 'columns' => [
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Archivo',
                                                                                         'value' => 'file'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'header' => 'Fecha Captura',
                                                                                         'value' => 'fecha'
                                                                                     ],
-                                                                                    [
+                                                                                        [
                                                                                         'class' => 'yii\grid\ActionColumn',
                                                                                         'header' => 'Evidencia',
                                                                                         'template' => '{ver}',
@@ -1744,25 +1686,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                     echo \yiister\gentelella\widgets\Timeline::widget(
                                                             [
                                                                 'items' => [
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 1: Orden de Compra / Cotización',
                                                                         'byline' => '<span>La orden de compra fue verificada y aceptada</a>',
                                                                         'content' => GridView::widget([
                                                                             'dataProvider' => $dataOdeC,
                                                                             'columns' => [
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Archivo',
                                                                                     'value' => 'file'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Captura',
                                                                                     'value' => 'fecha'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Validación',
                                                                                     'value' => 'validado'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'class' => 'yii\grid\ActionColumn',
                                                                                     'header' => 'Evidencia',
                                                                                     'template' => '{ver}',
@@ -1776,25 +1718,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                             ],
                                                                         ]),
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 2: Comprobante de Pago',
                                                                         'byline' => '<span>El comprobante de pago fue verificada y aceptada</a>',
                                                                         'content' => GridView::widget([
                                                                             'dataProvider' => $dataPago,
                                                                             'columns' => [
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Archivo',
                                                                                     'value' => 'file'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Captura',
                                                                                     'value' => 'fecha'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Validación',
                                                                                     'value' => 'validado'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'class' => 'yii\grid\ActionColumn',
                                                                                     'header' => 'Evidencia',
                                                                                     'template' => '{ver}',
@@ -1808,25 +1750,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                             ],
                                                                         ]),
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 3: Carta de Aceptación de Lineamientos',
                                                                         'byline' => '<span>La carta de aceptación fue verificada y aceptada</a>',
                                                                         'content' => GridView::widget([
                                                                             'dataProvider' => $dataAceptacion,
                                                                             'columns' => [
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Archivo',
                                                                                     'value' => 'file'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Captura',
                                                                                     'value' => 'fecha'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Validación',
                                                                                     'value' => 'validado'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'class' => 'yii\grid\ActionColumn',
                                                                                     'header' => 'Evidencia',
                                                                                     'template' => '{ver}',
@@ -1840,30 +1782,30 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                             ],
                                                                         ]),
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 4: Codigo de Identificación del Ensayo',
                                                                         'byline' => '<span>El siguiente código te permitirá identificar tu ensayo durante el proceso </a>',
                                                                         'content' => '<h3>CÓDIGO: ' . $model->codigo . '</h3>',
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 5: Evidencias de Recepción de Elemento de Ensayo',
                                                                         'byline' => '<span>La evidencia de recepción del elemento de ensayo fue verificada y aceptada</a>',
                                                                         'content' => GridView::widget([
                                                                             'dataProvider' => $dataRecepcion,
                                                                             'columns' => [
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Archivo',
                                                                                     'value' => 'file'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Captura',
                                                                                     'value' => 'fecha'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Validación',
                                                                                     'value' => 'validado'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'class' => 'yii\grid\ActionColumn',
                                                                                     'header' => 'Evidencia',
                                                                                     'template' => '{ver}',
@@ -1877,25 +1819,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                             ],
                                                                         ]),
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 6: Evidencia de Entrega del Elemento de Ensayo',
                                                                         'byline' => '<span>El archivo esta en proceso de validación y en breve deberá estar recibiendo un correo con el resultado de dicha validación</a>',
                                                                         'content' => GridView::widget([
                                                                             'dataProvider' => $dataEntrega,
                                                                             'columns' => [
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Archivo',
                                                                                     'value' => 'file'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Captura',
                                                                                     'value' => 'fecha'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'header' => 'Fecha Validación',
                                                                                     'value' => 'validado'
                                                                                 ],
-                                                                                [
+                                                                                    [
                                                                                     'class' => 'yii\grid\ActionColumn',
                                                                                     'header' => 'Evidencia',
                                                                                     'template' => '{ver}',
@@ -1909,59 +1851,35 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                             ],
                                                                         ]),
                                                                     ],
-                                                                    [
+                                                                        [
                                                                         'title' => 'Estatus 7: Captura de Resultados del Ensayo',
                                                                         'byline' => '<span>Los resultados fueron validados.</a>',
                                                                         'content' =>
-                                                                        GridView::widget([
-                                                                            'dataProvider' => $dataResultados,
+                                                                        $resultados_html
+                                                                        . GridView::widget([
+                                                                            'dataProvider' => $filesResultado,
                                                                             'columns' => [
-                                                                                [
-                                                                                    'header' => 'Sub Muestra',
-                                                                                    'value' => 'no_submuestra'
+                                                                                    [
+                                                                                    'header' => 'Archivo',
+                                                                                    'value' => 'file'
                                                                                 ],
-                                                                                [
-                                                                                    'header' => 'Resultado',
-                                                                                    'value' => 'resultado'
+                                                                                    [
+                                                                                    'header' => 'Fecha Captura',
+                                                                                    'value' => 'fecha'
                                                                                 ],
-                                                                                [
-                                                                                    'header' => 'Unidad',
-                                                                                    'value' => 'idunidad0.nombre'
-                                                                                ],
-                                                                                [
-                                                                                    'header' => 'Fecha de Captura',
-                                                                                    'value' => 'fecha_captura'
-                                                                                ],
-                                                                                [
-                                                                                    'header' => 'Fecha de Validación',
-                                                                                    'value' => 'fecha_validacion'
+                                                                                    [
+                                                                                    'class' => 'yii\grid\ActionColumn',
+                                                                                    'header' => 'Evidencia',
+                                                                                    'template' => '{ver}',
+                                                                                    'buttons' => [
+                                                                                        'ver' => function($url, $model) {
+                                                                                            return Html::a('Ver Evidencia', ['verarchivo', 'file' => $model->file, 'hash' => $model->hash], []
+                                                                                            );
+                                                                                        }
+                                                                                    ],
                                                                                 ],
                                                                             ],
-                                                                        ])
-                                                                        . GridView::widget([
-                                                                                'dataProvider' => $filesResultado,
-                                                                                'columns' => [
-                                                                                    [
-                                                                                        'header' => 'Archivo',
-                                                                                        'value' => 'file'
-                                                                                    ],
-                                                                                    [
-                                                                                        'header' => 'Fecha Captura',
-                                                                                        'value' => 'fecha'
-                                                                                    ],
-                                                                                    [
-                                                                                        'class' => 'yii\grid\ActionColumn',
-                                                                                        'header' => 'Evidencia',
-                                                                                        'template' => '{ver}',
-                                                                                        'buttons' => [
-                                                                                            'ver' => function($url, $model) {
-                                                                                                return Html::a('Ver Evidencia', ['verarchivo', 'file' => $model->file, 'hash' => $model->hash], []
-                                                                                                );
-                                                                                            }
-                                                                                        ],
-                                                                                    ],
-                                                                                ],
-                                                                            ]),
+                                                                        ]),
                                                                     ],
                                                                 ]
                                                             ]
@@ -2001,20 +1919,19 @@ $this->params['breadcrumbs'][] = $this->title;
                             Modal::end();
                             ?>  
                             <?php
-                            if($model->termina_resultados == null){
-                            echo $form->field($model, 'idarea', ['options' => [
-                                    'value' => $model->idarea]])->hiddenInput()->label(false);
+                            if ($model->termina_resultados == null) {
+                                echo $form->field($model, 'idarea', ['options' => [
+                                        'value' => $model->idarea]])->hiddenInput()->label(false);
 
-                            echo $form->field($model, 'idreferencia', ['options' => [
-                                    'value' => $model->idreferencia]])->hiddenInput()->label(false);
+                                echo $form->field($model, 'idreferencia', ['options' => [
+                                        'value' => $model->idreferencia]])->hiddenInput()->label(false);
 
-                            echo $form->field($model, 'idcot', ['options' => [
-                                    'value' => $model->idcot]])->hiddenInput()->label(false);
-                            
-                            ?>
+                                echo $form->field($model, 'idcot', ['options' => [
+                                        'value' => $model->idcot]])->hiddenInput()->label(false);
+                                ?>
 
-                            <?php 
-                                ActiveForm::end(); 
+                                <?php
+                                ActiveForm::end();
                             }
                             ?>
 

@@ -27,13 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="panel-body">
                     <div class="panel-body">                
                         <h5><b>Nombre de Cliente: </b>
-<?php echo $model_cte->nomcte; ?>
+                            <?php echo $model_cte->nomcte; ?>
                         </h5>
                         <h5><b>Email del Cliente: </b>
-<?php echo $model_cte->email; ?>
+                            <?php echo $model_cte->email; ?>
                         </h5>
                         <h5><b>Sucursal: </b>
-<?php echo $model_cte->sucursal; ?>
+                            <?php echo $model_cte->sucursal; ?>
                         </h5>
                     </div>
                 </div>
@@ -48,13 +48,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="panel-body">
                     <div class="panel-body">                
                         <h5><b>Area: </b>
-<?php echo $model_calibracion->idarea0->descarea; ?>
+                            <?php echo $model_calibracion->idarea0->descarea; ?>
                         </h5>
                         <h5><b>Referencia: </b>
-<?php echo $model_calibracion->idreferencia0->descreferencia; ?>
+                            <?php echo $model_calibracion->idreferencia0->descreferencia; ?>
                         </h5>
                         <h5><b>Intervalo: </b>
-<?php echo $model_calibracion->intervalo; ?>
+                            <?php echo $model_calibracion->intervalo; ?>
                         </h5>
                     </div>
                 </div>
@@ -67,24 +67,34 @@ $this->params['breadcrumbs'][] = $this->title;
             <h3 class="panel-title">Validar Evidencias</h3>
         </div>
         <div class="panel-body">
+            
+            <?php
+            if($idetapa == 7){
+                ?>
+            <div class="table-responsive">
+                <?= $table ?>
+            </div>
+            <?php
+            }
+            ?>
 
             <?=
             GridView::widget([
                 'dataProvider' => $data,
                 'columns' => [
-                    [
+                        [
                         'header' => 'Archivo',
                         'value' => 'file'
                     ],
-                    [
+                        [
                         'header' => 'Fecha Captura',
                         'value' => 'fecha'
                     ],
-                    [
+                        [
                         'header' => 'Fecha Validación',
                         'value' => 'validado'
                     ],
-                    [
+                        [
                         'class' => 'yii\grid\ActionColumn',
                         'header' => 'Validar',
                         'template' => '{validar}',
@@ -101,7 +111,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             },
                         ],
                     ],
-                    [
+                        [
                         'class' => 'yii\grid\ActionColumn',
                         'header' => 'Evidencia',
                         'template' => '{ver}',
@@ -121,11 +131,11 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-            <?php
-            $form = ActiveForm::begin([
-                        'action' => ['enviaremail', 'idarea' => $idarea, 'idref' => $idref, 'idcot' => $idcot, 'idetapa' => $idetapa],
-            ]);
-            ?>
+    <?php
+    $form = ActiveForm::begin([
+                'action' => ['enviaremail', 'idarea' => $idarea, 'idref' => $idref, 'idcot' => $idcot, 'idetapa' => $idetapa],
+    ]);
+    ?>
 
     <div class="panel panel-primary">
         <div class="panel-heading">
@@ -133,28 +143,28 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <div class="panel-body">
-<?=
-'<h3>' . Html::bsLabel("Recuerda enviar la notificación al cliente para finalizar con la revisión de esta etapa, en caso de no enviarla el cliente no podra seguir con el proceso", Html::TYPE_DANGER) . '</h3>';
-?>
+            <?=
+            '<h3>' . Html::bsLabel("Recuerda enviar la notificación al cliente para finalizar con la revisión de esta etapa, en caso de no enviarla el cliente no podra seguir con el proceso", Html::TYPE_DANGER) . '</h3>';
+            ?>
 
             <br><h5><b>Contacto a enviar la notificación: </b></h5>
-<?=
-Html::dropDownList('email', null, $listcontactos, [
-    'id' => 'listcontactos.nocontacto0.emailcon',
-    'prompt' => 'Selecciona un contacto para enviar la notificación',
-    'class' => 'form-control',
-]);
-?>
-
-            <div class="panel-body">                
             <?=
-            MarkdownEditor::widget([
-                'name' => 'emailcontacto',
-                'value' => $texto,
-                'smarty' => true,
-                'height' => 100,
+            Html::dropDownList('email', null, $listcontactos, [
+                'id' => 'listcontactos.nocontacto0.emailcon',
+                'prompt' => 'Selecciona un contacto para enviar la notificación',
+                'class' => 'form-control',
             ]);
             ?>
+
+            <div class="panel-body">                
+                <?=
+                MarkdownEditor::widget([
+                    'name' => 'emailcontacto',
+                    'value' => $texto,
+                    'smarty' => true,
+                    'height' => 100,
+                ]);
+                ?>
             </div>
             <div class="form-group">
                 <?= Html::submitButton('Enviar Email de Notificación', ['class' => 'btn btn-primary']) ?>
@@ -162,5 +172,5 @@ Html::dropDownList('email', null, $listcontactos, [
         </div>
     </div>
 
-                <?php ActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>
 </div>

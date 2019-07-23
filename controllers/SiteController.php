@@ -151,7 +151,8 @@ class SiteController extends Controller
                                                               ->andWhere(['not',['termina_pago'=>null]])
                                                               ->andWhere(['not',['termina_aceptacion'=>null]])
                                                               ->andWhere(['not',['termina_recepcion'=>null]])
-                                                              ->andWhere(['not',['termina_entrega'=>null]])->count();
+                                                              ->andWhere(['not',['termina_entrega'=>null]])
+                                                              ->andWhere(['not',['termina_resultados'=>null]])->count();
            
             $cant_odec_gen = SeguimientoGeneral::find()->where(['not',['termina_odec'=>null]])
                                                        ->andWhere(['valida_odec'=>null])->count();
@@ -167,7 +168,8 @@ class SiteController extends Controller
                                                        ->andWhere(['not',['termina_pago'=>null]])
                                                        ->andWhere(['not',['termina_aceptacion'=>null]])
                                                        ->andWhere(['not',['termina_recepcion'=>null]])
-                                                       ->andWhere(['not',['termina_entrega'=>null]])->count();
+                                                       ->andWhere(['not',['termina_entrega'=>null]])
+                                                       ->andWhere(['not',['termina_resultados'=>null]])->count();
 
             /*if (User::isUserAdmin(Yii::$app->user->identity->id))
             {

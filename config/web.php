@@ -68,7 +68,7 @@ $config = [
             //'port' => '587',
             'port' => '26',
             //'encryption' => 'ssl',
-            'encryption' => 'tls',
+            //'encryption' => 'tls',
         ],
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
@@ -86,19 +86,19 @@ $config = [
         ],
         'formatter' => [
             'defaultTimeZone' => 'UTC',
-            'timeZone' => 'America/Monterrey',
+            'timeZone' => 'America/Mexico_City',
             'dateFormat' => 'php:d-m-Y',
             'datetimeFormat'=>'php:d-M-Y H:i:s'
         ],
         'db' => $db,
-        /*
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+        
     ],
     'params' => $params,
 ];

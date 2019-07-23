@@ -3,6 +3,8 @@
 namespace app\modules\ensayos\controllers;
 
 use Yii;
+use kartik\helpers\Html;
+use yii\helpers\Url;
 use app\modules\calendarios\models\CalendarioCalibracion;
 use app\modules\ensayos\models\SeguimientoCalibracion;
 use app\modules\ensayos\models\CalendarioClientes;
@@ -24,6 +26,9 @@ use app\modules\ensayos\models\ResultadosSubmuestrasCalibracion;
 use app\modules\ensayos\models\ResultadosSubmuestrasGeneral;
 use app\modules\ensayos\models\UnidadesResultados;
 use app\modules\ensayos\models\FormCargaSubmuestra;
+use app\modules\ensayos\models\SeccionesFormularioCalibracion;
+use app\modules\ensayos\models\DetalleFormularioSeccion;
+use app\modules\ensayos\models\DetalleResultadosSubmuestraCalibracion;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -32,6 +37,8 @@ use yii\data\ActiveDataProvider;
 use yii\web\UploadedFile;
 use yii\widgets\ActiveForm;
 use yii\web\Response;
+use kartik\widgets\FileInput;
+use kartik\grid\GridView;
 
 class EnsayosController extends Controller {
 
@@ -228,6 +235,20 @@ class EnsayosController extends Controller {
 
         return $this->redirect(['seguimientocalibracion', 'idarea' => $idarea, 'idref' => $idref, 'idcot' => $idcot]);
     }
+    
+    public function actionTerminarentregaresultadoscalibracion($idarea, $idref, $idcot) {
+        $nofiles = EvidenciaCalibracion::find()->where(['idarea' => $idarea, 'idreferencia' => $idref, 'idcot' => $idcot, 'idetapa' => 7])->count();
+        if ($nofiles > 0) {
+            $model = SeguimientoCalibracion::find()->where(['idarea' => $idarea, 'idreferencia' => $idref, 'idcot' => $idcot])->one();
+            $model->termina_resultados = date('Y-m-d');
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'El envio de la evidencia de los resultados del ensayo fue terminada exitosamente');
+            }
+        } else
+            Yii::$app->session->setFlash('danger', 'No se puede terminar la etapa sin haber enviado evidencias de los resultados del elemento de ensayo');
+
+        return $this->redirect(['seguimientocalibracion', 'idarea' => $idarea, 'idref' => $idref, 'idcot' => $idcot]);
+    }
 
     public function actionTerminaresultados($idarea, $idref, $idcot) {
         $nofiles = EvidenciaCalibracion::find()->where(['idarea' => $idarea, 'idreferencia' => $idref, 'idcot' => $idcot, 'idetapa' => 7])->count();
@@ -283,12 +304,15 @@ class EnsayosController extends Controller {
         $cotCalibracion = CotizacionCalibracion::find()->where(['idarea' => $idarea, 'idreferencia' => $idref, 'idcot' => $idcot])->one();
 
         $dataResultados = new ActiveDataProvider([
-            'query' => ResultadosSubmuestrasCalibracion::find()->with('idunidad0')->where(['idarea' => $idarea, 'idreferencia' => $idref, 'idcot' => $idcot]),
+            'query' => ResultadosSubmuestrasCalibracion::find()->where(['idarea' => $idarea, 'idreferencia' => $idref, 'idcot' => $idcot]),
         ]);
 
         $cantSubMuestra = ResultadosSubmuestrasCalibracion::find()->where(['idarea' => $idarea, 'idreferencia' => $idref, 'idcot' => $idcot])->count();
 
-        //$model_area = Areas::find()->where(['idarea'=>$idarea])->one();
+        $resultados_html = $this->GetResultadosCalibracion($idarea, $idref, $idcot, $model_evidencia, $model);
+
+        $model_area = Areas::find()->where(['idarea'=>$idarea])->one();
+        $cant_serie_datos = $model_area->cantidad_serie_datos;
         //$model_refe = Referencias::find()->where(['idreferencia'=>$idref])->one();
 
         return $this->render('SeguimientoCalibracion', [
@@ -309,7 +333,8 @@ class EnsayosController extends Controller {
                     'idref' => $idref,
                     'idcot' => $idcot,
                     'filesResultado' => $filesResultado,
-                        //'model_area' => $model_area,
+                    'resultados_html' => $resultados_html,
+                    'cant_serie_datos' => $cant_serie_datos,
                         //'model_ref'  => $model_refe           
         ]);
     }
@@ -552,10 +577,9 @@ class EnsayosController extends Controller {
         ]);
     }
 
-    public function actionCapturarsubmuestras() {
-        $model = new ResultadosSubmuestrasCalibracion();
-        $unidades = ArrayHelper::map(UnidadesResultados::find()->all(), 'idunidad', 'nombre');
-        return $this->renderAjax('capturarsubmuestra', ['model' => $model, 'unidades' => $unidades]);
+    public function actionCapturarsubmuestra($idarea, $idref, $idcot) {
+        $secciones = $this->GetFormularioArea($idarea);
+        return $this->render('capturarsubmuestra', ['secciones' => $secciones, 'idarea' => $idarea, 'idref' => $idref, 'idcot' => $idcot]);
     }
 
     public function actionCapturarsubmuestrageneral() {
@@ -564,18 +588,11 @@ class EnsayosController extends Controller {
         return $this->renderAjax('capturarsubmuestrageneral', ['model' => $model, 'unidades' => $unidades]);
     }
 
-    public function actionActualizarsubmuestra() {
-        $model = new ResultadosSubmuestrasCalibracion();
-        $model->idarea = $_GET['idarea'];
-        $model->idreferencia = $_GET['idref'];
-        $model->idcot = $_GET['idcot'];
-        $model->no_submuestra = $_GET['no_submuestra'];
-        $model->parametro = $_GET['parametro'];
-        $dataResultado = ResultadosSubmuestrasCalibracion::find()->where(['idarea' => $model->idarea, 'idreferencia' => $model->idreferencia, 'idcot' => $model->idcot, 'no_submuestra' => $model->no_submuestra])->one();
-        $model->idunidad = $dataResultado->idunidad;
-        $model->resultado = $dataResultado->resultado;
-        $unidades = ArrayHelper::map(UnidadesResultados::find()->all(), 'idunidad', 'nombre');
-        return $this->renderAjax('actualizarsubmuestra', ['model' => $model, 'unidades' => $unidades]);
+    public function actionActualizarsubmuestra($idarea, $idref, $idcot, $no_submuestra) {
+        $secciones = $this->GetFormularioAreaEditar($no_submuestra, $idarea, $idref, $idcot);
+        $fecha = ResultadosSubmuestrasCalibracion::find()->where(['no_submuestra' => $no_submuestra, 'idcot' => $idcot, 'idreferencia' => $idref, 'idarea' => $idarea])->one();
+        $fecha = date("d/m/Y", strtotime($fecha->fecha_captura));
+        return $this->render('actualizarsubmuestra', ['secciones' => $secciones, 'idarea' => $idarea, 'idref' => $idref, 'idcot' => $idcot, 'no_submuestra' => $no_submuestra, 'fecha' => $fecha]);
     }
 
     public function actionActualizarsubmuestrageneral() {
@@ -595,12 +612,38 @@ class EnsayosController extends Controller {
     }
 
     public function actionRegistrarsubmuestra() {
-        $model = new ResultadosSubmuestrasCalibracion();
-        if ($model->load(Yii::$app->request->post())) {
+
+        if (isset($_POST['idarea'])) {
+            $model = new ResultadosSubmuestrasCalibracion();
+            $model->idarea = Yii::$app->request->post('idarea');
+            $model->idreferencia = Yii::$app->request->post('idref');
+            $model->idcot = Yii::$app->request->post('idcot');
             $model->no_submuestra = ResultadosSubmuestrasCalibracion::find()->where(['idarea' => $model->idarea, 'idreferencia' => $model->idreferencia, 'idcot' => $model->idcot])->count() + 1;
             $model->fecha_captura = date('Y-m-d');
             if ($model->save()) {
-                Yii::$app->session->setFlash('success', 'La Sub Muestra fue resgistrada correctamente');
+                $secciones_area = SeccionesFormularioCalibracion::find()
+                        ->where(['idarea' => $model->idarea])
+                        ->andWhere(['status' => 1])
+                        ->orderBy(['orden' => SORT_ASC])
+                        ->all();
+                foreach ($secciones_area as $datos) {
+                    $detalle_formulario = DetalleFormularioSeccion::find()
+                            ->where(['idseccion' => $datos->idseccion])
+                            ->andWhere(['status' => 1])
+                            ->orderBy(['orden' => SORT_ASC])
+                            ->all();
+                    foreach ($detalle_formulario as $formulario) {
+                        $model_resultados = new DetalleResultadosSubmuestraCalibracion();
+                        $model_resultados->no_submuestra = $model->no_submuestra;
+                        $model_resultados->idcot = $model->idcot;
+                        $model_resultados->idarea = $model->idarea;
+                        $model_resultados->idreferencia = $model->idreferencia;
+                        $model_resultados->idseccion = $datos->idseccion;
+                        $model_resultados->id_campo = $formulario->id_campo;
+                        $model_resultados->valor = $_POST['s_' . $datos->idseccion . '_c_' . $formulario->id_campo];
+                        $model_resultados->save();
+                    }
+                }
             } else {
                 Yii::$app->session->setFlash('danger', 'Ocurrio un error al registrar la Sub Muestra');
             }
@@ -629,25 +672,32 @@ class EnsayosController extends Controller {
     }
 
     public function actionActualizarsubmuestraenvio() {
-        $model = new ResultadosSubmuestrasCalibracion();
-        if ($model->load(Yii::$app->request->post())) {
-            $table = ResultadosSubmuestrasCalibracion::find()->where(['idarea' => $model->idarea, 'idreferencia' => $model->idreferencia, 'idcot' => $model->idcot, 'no_submuestra' => $model->no_submuestra])->one();
-            if ($table) {
-                $table->resultado = $model->resultado;
-                $table->idunidad = $model->idunidad;
-                if ($table->update()) {
-                    Yii::$app->session->setFlash('success', 'La Sub Muestra fue resgistrada correctamente');
-                } else {
-                    Yii::$app->session->setFlash('danger', 'Ocurrio un error al registrar la Sub Muestra');
+        $idarea = Yii::$app->request->post('idarea');
+        $idcot = Yii::$app->request->post('idcot');
+        $idref = Yii::$app->request->post('idref');
+        $no_submuestra = Yii::$app->request->post('no_submuestra');
+
+        $secciones_area = SeccionesFormularioCalibracion::find()
+                ->where(['idarea' => $idarea])
+                ->andWhere(['status' => 1])
+                ->orderBy(['orden' => SORT_ASC])
+                ->all();
+        foreach ($secciones_area as $datos) {
+            $detalle_formulario = DetalleFormularioSeccion::find()
+                    ->where(['idseccion' => $datos->idseccion])
+                    ->andWhere(['status' => 1])
+                    ->orderBy(['orden' => SORT_ASC])
+                    ->all();
+            foreach ($detalle_formulario as $formulario) {
+                $table_resultados = DetalleResultadosSubmuestraCalibracion::find()->where(['no_submuestra' => $no_submuestra, 'idcot' => $idcot, 'idarea' => $idarea, 'idreferencia' => $idref, 'idseccion' => $datos->idseccion, 'id_campo' => $formulario->id_campo])->one();
+                if ($table_resultados) {
+                    $table_resultados->valor = $_POST['s_' . $datos->idseccion . '_c_' . $formulario->id_campo];
+                    $table_resultados->update();
                 }
-                return $this->redirect(["seguimientocalibracion", 'idarea' => $model->idarea, 'idref' => $model->idreferencia, 'idcot' => $model->idcot]);
-            } else {
-                return $this->redirect(["seguimientocalibracion", 'idarea' => $model->idarea, 'idref' => $model->idreferencia, 'idcot' => $model->idcot]);
             }
-        } else {
-            Yii::$app->session->setFlash('danger', 'No se enviaron datos');
-            return $this->redirect(["site/index"]);
         }
+        Yii::$app->session->setFlash('success', 'La Sub Muestra fue actualizada correctamente');
+        return $this->redirect(["seguimientocalibracion", 'idarea' => $idarea, 'idref' => $idref, 'idcot' => $idcot]);
     }
 
     public function actionActualizarsubmuestraenviogeneral() {
@@ -670,6 +720,158 @@ class EnsayosController extends Controller {
             Yii::$app->session->setFlash('danger', 'No se enviaron datos');
             return $this->redirect(["site/index"]);
         }
+    }
+
+    public function GetFormularioArea($idarea) {
+        $array_data = [];
+        $secciones_area = SeccionesFormularioCalibracion::find()
+                ->where(['idarea' => $idarea])
+                ->andWhere(['status' => 1])
+                ->orderBy(['orden' => SORT_ASC])
+                ->all();
+        foreach ($secciones_area as $datos) {
+            $campos = array();
+            $detalle_formulario = DetalleFormularioSeccion::find()
+                    ->with('idunidad0')
+                    ->where(['idseccion' => $datos->idseccion])
+                    ->andWhere(['status' => 1])
+                    ->orderBy(['orden' => SORT_ASC])
+                    ->all();
+            foreach ($detalle_formulario as $formulario) {
+                if ($formulario->idunidad != NULL) {
+                    $unidad = "(" . $formulario->idunidad0->abre . ")";
+                } else {
+                    $unidad = '';
+                }
+                $array_campos = ['idCampo' => $formulario->id_campo, 'unidad' => $unidad, 'formula' => $formulario->formula, 'texto_etiquetas' => $formulario->texto_etiquetas, 'tipo_entrada' => $formulario->tipo_entrada, 'requerido' => $formulario->requerido, 'orden' => $formulario->orden];
+                array_push($campos, $array_campos);
+            }
+            $array = ['id' => $datos->idseccion, 'nombre' => $datos->nombre, 'orden' => $datos->orden, 'campos' => $campos];
+            array_push($array_data, $array);
+        }
+        return $array_data;
+    }
+
+    public function GetFormularioAreaEditar($no_muestra, $idarea, $idref, $idcot) {
+        $array_data = [];
+        $secciones_area = SeccionesFormularioCalibracion::find()
+                ->where(['idarea' => $idarea])
+                ->andWhere(['status' => 1])
+                ->orderBy(['orden' => SORT_ASC])
+                ->all();
+        foreach ($secciones_area as $datos) {
+            $campos = array();
+            $detalle_formulario = DetalleFormularioSeccion::find()
+                    ->with('idunidad0')
+                    ->where(['idseccion' => $datos->idseccion])
+                    ->andWhere(['status' => 1])
+                    ->orderBy(['orden' => SORT_ASC])
+                    ->all();
+            foreach ($detalle_formulario as $formulario) {
+                if ($formulario->idunidad != NULL) {
+                    $unidad = "(" . $formulario->idunidad0->abre . ")";
+                } else {
+                    $unidad = '';
+                }
+                $data_resultados = DetalleResultadosSubmuestraCalibracion::find()->where(['idcot' => $idcot, 'idarea' => $idarea, 'idreferencia' => $idref, 'idseccion' => $datos->idseccion, 'id_campo' => $formulario->id_campo, 'no_submuestra' => $no_muestra])->one();
+
+
+                $array_campos = ['idCampo' => $formulario->id_campo, 'unidad' => $unidad, 'formula' => $formulario->formula, 'texto_etiquetas' => $formulario->texto_etiquetas, 'tipo_entrada' => $formulario->tipo_entrada, 'requerido' => $formulario->requerido, 'orden' => $formulario->orden, 'valor' => $data_resultados->valor];
+                array_push($campos, $array_campos);
+            }
+            $array = ['id' => $datos->idseccion, 'nombre' => $datos->nombre, 'orden' => $datos->orden, 'campos' => $campos];
+            array_push($array_data, $array);
+        }
+        return $array_data;
+    }
+
+    private function GetResultadosCalibracion($idarea, $idref, $idcot, $model_evidencia, $model) {
+        $array_data = array();
+        $secciones_area = SeccionesFormularioCalibracion::find()
+                ->where(['idarea' => $idarea])
+                ->andWhere(['status' => 1])
+                ->orderBy(['orden' => SORT_ASC])
+                ->all();
+        foreach ($secciones_area as $datos) {
+            $campos = array();
+            $detalle_formulario = DetalleFormularioSeccion::find()
+                    ->with('idunidad0')
+                    ->where(['idseccion' => $datos->idseccion])
+                    ->andWhere(['status' => 1])
+                    ->orderBy(['orden' => SORT_ASC])
+                    ->all();
+            foreach ($detalle_formulario as $formulario) {
+                if ($formulario->idunidad != NULL) {
+                    $unidad = "(" . $formulario->idunidad0->abre . ")";
+                } else {
+                    $unidad = '';
+                }
+                $data_resultados = DetalleResultadosSubmuestraCalibracion::find()->where(['idcot' => $idcot, 'idarea' => $idarea, 'idreferencia' => $idref, 'idseccion' => $datos->idseccion, 'id_campo' => $formulario->id_campo])
+                        ->orderBy(['no_submuestra' => SORT_ASC])
+                        ->all();
+                $resultados_array = array();
+                foreach ($data_resultados as $resultados_record) {
+                    array_push($resultados_array, $resultados_record->valor);
+                }
+                $array_campos = ['idCampo' => $formulario->id_campo, 'unidad' => $unidad, 'formula' => $formulario->formula, 'texto_etiquetas' => $formulario->texto_etiquetas, 'tipo_entrada' => $formulario->tipo_entrada, 'requerido' => $formulario->requerido, 'orden' => $formulario->orden, 'resultados' => $resultados_array];
+                array_push($campos, $array_campos);
+            }
+            $array = ['id' => $datos->idseccion, 'nombre' => $datos->nombre, 'orden' => $datos->orden, 'campos' => $campos];
+            array_push($array_data, $array);
+        }
+
+        $conteoResultados = ResultadosSubmuestrasCalibracion::find()->where(['idarea' => $idarea, 'idreferencia' => $idref, 'idcot' => $idcot])->count();
+
+        if ($conteoResultados < 5) {
+            $boton_agregar = Html::a('<span class="fa fa-plus"></span> Agregar Sub Muestra', ['capturarsubmuestra', 'idarea' => $idarea, 'idref' => $idref, 'idcot' => $idcot], ['class' => 'btn btn-primary']);
+        } else {
+            $boton_agregar = '';
+        }
+
+        $html = $boton_agregar;
+        $html .= '<div class="table-responsive">
+            <table class="table table-bordered table-condensed table-borderless table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center"></th>';
+
+        foreach ($array_data as $cabeceras) {
+            $html .= '<th class="text-center" style="vertical-align: middle;" colspan="' . count($cabeceras['campos']) . '">' . $cabeceras['nombre'] . '</th>';
+        }
+
+        $html .= '</tr>
+                    <tr>
+                        <th class="text-center" style="vertical-align: middle;">Acciones</th>';
+
+        foreach ($array_data as $i) {
+            foreach ($i['campos'] as $j) {
+                $html .= '<th class="text-center" style="vertical-align: middle;">' . $j['texto_etiquetas'] . '</th>';
+            }
+        }
+
+        $dataResultados = ResultadosSubmuestrasCalibracion::find()->where(['idarea' => $idarea, 'idreferencia' => $idref, 'idcot' => $idcot])->all();
+
+        $html .= '</tr>
+                </thead>
+                <tbody>';
+
+        foreach ($dataResultados as $noMuestra) {
+            $resVal = $noMuestra->fecha_validacion != NULL ? Html::bsLabel('VALIDADO', Html::TYPE_SUCCESS) : Html::a('<span class="fa fa-edit text-success"></span>', ['actualizarsubmuestra', 'idarea' => $idarea, 'idref' => $idref, 'idcot' => $idcot, 'no_submuestra' => $noMuestra->no_submuestra], ['title' => 'Editar Sub muestra']);
+            $html .= '<tr>'
+                    . '<td class="text-center">' . $resVal . '</td>';
+            foreach ($array_data as $i) {
+                foreach ($i['campos'] as $j) {
+                    $html .= '<td class="text-center" style="vertical-align: middle;">' . $j['resultados'][$noMuestra->no_submuestra - 1] . '</td>';
+                }
+            }
+            $html .= '</tr>';
+        }
+
+        $html .= '</tbody>
+            </table>
+        </div>';
+        
+        return $html;
     }
 
 }

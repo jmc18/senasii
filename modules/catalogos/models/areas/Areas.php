@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\catalogos\models;
+namespace app\modules\catalogos\models\areas;
 
 use Yii;
 
@@ -9,9 +9,10 @@ use Yii;
  *
  * @property integer $idarea
  * @property string $descarea
- * @property string $cantidad_serie_datos
+ *
  * @property CalendarioCalibracion[] $calendarioCalibracions
  * @property Referencias[] $idreferencias
+ * @property SeccionesFormularioCalibracion[] $seccionesFormularioCalibracions
  */
 class Areas extends \yii\db\ActiveRecord
 {
@@ -30,7 +31,6 @@ class Areas extends \yii\db\ActiveRecord
     {
         return [
             [['descarea'], 'string', 'max' => 30],
-            [['cantidad_serie_datos'], 'integer'],
         ];
     }
 
@@ -41,8 +41,7 @@ class Areas extends \yii\db\ActiveRecord
     {
         return [
             'idarea' => 'Idarea',
-            'descarea' => 'Descripción',
-            'cantidad_serie_datos' => 'Cantidad de Serie de Datos',
+            'descarea' => 'Descarea',
         ];
     }
 
@@ -60,5 +59,13 @@ class Areas extends \yii\db\ActiveRecord
     public function getIdreferencias()
     {
         return $this->hasMany(Referencias::className(), ['idreferencia' => 'idreferencia'])->viaTable('calendario_calibracion', ['idarea' => 'idarea']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSeccionesFormularioCalibracions()
+    {
+        return $this->hasMany(SeccionesFormularioCalibracion::className(), ['idarea' => 'idarea']);
     }
 }

@@ -223,4 +223,13 @@ class AlertasController extends Controller
         Yii::$app->session->setFlash('success', 'La alerta programada se eliminó correctamente del ensayo');
         return $this->redirect(['general', 'idrama' => $idrama, 'idsubrama' => $idsubrama, 'idanalito' => $idanalito, 'idref' => $idref, 'idcot' => $idcot]);
     }
+    
+    public function actionSendNotification(){
+        Yii::$app->mailer->compose()
+                    ->setFrom('sistemas@sena.mx')
+                    ->setTo("mtzcornejo66@gmail.com")
+                    ->setSubject("Prueba")
+                    ->setHtmlBody("<h1>Notificación</h1><br><p>Prueba de notificación</p>")
+                    ->send();
+    }
 }

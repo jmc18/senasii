@@ -1178,7 +1178,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                                 ],
                                                                             ]) . $form->field($model_evidencia, 'excel')->widget(FileInput::classname(), [
                                                                                 'options' => ['accept' => ['application/vnd.ms-excel']],
-                                                                                'pluginOptions' => ['allowedFileExtensions' => ['xlsx', 'xls'], 'showUpload' => false,],
+                                                                                'pluginOptions' => ['allowedFileExtensions' => ['xlsx', 'xls'], 'showUpload' => true,],
                                                                             ])->label("Documento de Evidencia")
                                                                             . Html::submitButton('Subir Evidencia Entrega', ['class' => $cantSubMuestra < 5 ? 'btn btn-success hidden' : 'btn btn-success'])
                                                                             . Html::a('Terminar Captura de Evidencia', ['ensayos/terminaretapagen',
