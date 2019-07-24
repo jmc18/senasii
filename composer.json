@@ -17,7 +17,8 @@
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0.5",
         "yiisoft/yii2-bootstrap": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0"
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "mihaildev/yii2-ckeditor": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -36,7 +37,7 @@
         "codeception/verify": "~0.3.1",
         "codeception/specify": "~0.4.3",
         
-        "lavrentiev/yii2-toastr": "^2.0"
+        "mihaildev/yii2-ckeditor": "*"
     },
     "config": {
         "process-timeout": 1800,
